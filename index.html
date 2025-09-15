@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YeaPlanner - Список важных дел</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container container">
+        <button class="theme-toggle" aria-label="Переключить тему" data-theme-toggle>
+          <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
+          <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+        </button>
+
+        <div class="header__logo">
+          <img src="./vendor/images/rocket.svg" alt="YeaPlanner - Logo" width="26" height="39" />
+          <h1 class="header__title">
+            <span class="text-blue">Yea</span>
+            <span class="text-purple">Planner</span>
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <form class="todo-form" data-js-todo-new-task-form>
+          <div class="todo-form__field input-field">
+            <label for="new-task" class="visually-hidden">Введите название новой задачи</label>
+            <input
+              class="todo-form__input input"
+              id="new-task"
+              type="text"
+              placeholder="Введите название новой задачи..."
+              autocomplete="off"
+              required
+              data-js-todo-new-task-input />
+            <button
+              class="input-clear"
+              type="button"
+              aria-label="Очистить"
+              data-js-todo-new-task-clear></button>
+          </div>
+
+          <button class="todo-form__button button button--blue" type="submit">
+            Создать
+            <img
+              class="todo-form__icon"
+              src="./vendor/images/square-plus.svg"
+              alt=""
+              aria-hidden="true" />
+          </button>
+        </form>
+
+        <section class="todo-bar">
+          <div class="todo-bar__stats">
+            <span class="todo-bar__stat text-blue">
+              Всего задач
+              <span class="todo-bar__stat-counter" data-js-todo-total-tasks-counter> 0 </span>
+            </span>
+            <span class="todo-bar__divider">|</span>
+            <span class="todo-bar__stat text-purple">
+              Выполнено
+              <span class="todo-bar__stat-counter" data-js-todo-completed-tasks-counter> 0 </span>
+            </span>
+          </div>
+
+          <form class="todo-bar__search">
+            <div class="todo-bar__field input-field">
+              <label for="search-tasks" class="visually-hidden">Поиск задач</label>
+              <input
+                class="todo-bar__search-input input input--small"
+                id="search-tasks"
+                type="search"
+                placeholder="Поиск задач..."
+                autocomplete="off"
+                data-js-todo-search-task-input />
+              <button
+                class="input-clear"
+                type="button"
+                aria-label="Очистить"
+                data-js-todo-search-clear></button>
+            </div>
+          </form>
+        </section>
+
+        <section class="todos">
+          <div class="todos__header">
+            <h2 class="todos__title">Список задач</h2>
+            <label for="filter-tasks" class="visually-hidden">Фильтр задач</label>
+            <select
+              class="todos__filter select"
+              id="filter-tasks"
+              data-js-todo-filter
+              aria-label="Фильтр задач">
+              <option value="all">Все</option>
+              <option value="active">Активные</option>
+              <option value="completed">Выполненные</option>
+            </select>
+            <button
+              class="todos__delete-all button button--purple"
+              type="button"
+              data-js-todo-delete-all-button>
+              Удалить все
+            </button>
+          </div>
+
+          <ul class="todo-list" data-js-todo-list></ul>
+        </section>
+
+        <section class="empty" data-js-todo-empty-message>
+          <img src="./vendor/images/task-list.png" alt="Пустой список" width="56" height="56" />
+          <div class="empty__text">
+            <h2 class="empty__title">Список задач пуст</h2>
+            <p class="empty__description">
+              Добавьте новые задачи или попробуйте изменить условия поиска
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <template data-js-todo-item-template>
+      <li class="todo-list__item" data-js-todo-item>
+        <input class="todo-list__checkbox" type="checkbox" data-js-todo-item-checkbox />
+        <label class="todo-list__label" data-js-todo-item-label></label>
+        <div class="todo-list__actions">
+          <button
+            class="todo-list__edit"
+            type="button"
+            aria-label="Редактировать"
+            title="Редактировать"
+            data-js-todo-item-edit-button>
+            <span class="todo-list__icon todo-list__icon--edit"></span>
+          </button>
+          <button
+            class="todo-list__delete"
+            type="button"
+            aria-label="Удалить"
+            title="Удалить"
+            data-js-todo-item-delete-button>
+            <span class="todo-list__icon todo-list__icon--delete"></span>
+          </button>
+        </div>
+      </li>
+    </template>
+    <script src="./js/app.js" type="module"></script>
+  </body>
+</html>

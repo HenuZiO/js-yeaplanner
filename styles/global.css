@@ -1,0 +1,241 @@
+body {
+  color: var(--color-gray-100);
+  font-family: 'Inter-Variable', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  background-color: var(--color-gray-600);
+}
+
+.container {
+  max-width: 768px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-100);
+  transition-duration: 0.2s;
+  font-size: 13px;
+  font-weight: 600;
+  height: 36px;
+  padding: 0 20px;
+  outline: 1px solid transparent;
+}
+
+.button--purple {
+  background-color: var(--color-purple-dark);
+}
+
+.button--purple:hover {
+  background-color: var(--color-purple);
+}
+
+.button--purple:focus-visible {
+  outline-color: var(--color-purple);
+}
+
+.button--blue {
+  background-color: var(--color-blue-dark);
+}
+
+.button--blue:hover {
+  background-color: var(--color-blue);
+}
+
+.button--blue:focus-visible {
+  outline-color: var(--color-blue);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 26px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-gray-400) 0%, var(--color-gray-500) 100%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-gray-300);
+  outline-offset: 2px;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-gray-300);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.theme-toggle--light::before {
+  transform: translateX(24px);
+}
+
+.theme-toggle__icon {
+  position: absolute;
+  font-size: 12px;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.theme-toggle__icon--sun {
+  left: 6px;
+  opacity: 0;
+}
+
+.theme-toggle__icon--moon {
+  right: 6px;
+  opacity: 1;
+}
+
+.theme-toggle--light .theme-toggle__icon--sun {
+  opacity: 1;
+}
+
+.theme-toggle--light .theme-toggle__icon--moon {
+  opacity: 0;
+}
+
+.input {
+  height: 46px;
+  border: 1px solid var(--color-gray-700);
+  border-radius: 8px;
+  padding-inline: 16px;
+  color: var(--color-gray-200);
+  background-color: var(--color-gray-500);
+  transition: border-color 0.2s ease;
+}
+
+.input::placeholder {
+  opacity: 1;
+  color: var(--color-gray-300);
+  transition: color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:focus-visible {
+  border-color: var(--color-gray-400);
+}
+
+.input:focus::placeholder {
+  color: var(--color-gray-200);
+}
+
+.input::-webkit-search-decoration,
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-results-button,
+.input::-webkit-search-results-decoration {
+  display: none;
+}
+
+.input--small {
+  height: 36px;
+  padding-inline: 12px;
+  font-size: 13px;
+}
+
+.text-blue {
+  color: var(--color-blue);
+}
+
+.text-purple {
+  color: var(--color-purple-dark);
+}
+
+.select {
+  height: 36px;
+  border: 1px solid var(--color-gray-700);
+  border-radius: 8px;
+  padding: 0 16px;
+  color: var(--color-gray-200);
+  font-size: 13px;
+  font-weight: 500;
+  background-color: var(--color-gray-500);
+  cursor: pointer;
+  appearance: none;
+  transition-duration: 0.2s;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.select:focus-visible {
+  border-color: var(--color-gray-400);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.is-visible {
+  display: flex;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.input-clear {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  border: none;
+  opacity: 0;
+  background: transparent;
+  background-color: var(--color-gray-300);
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  pointer-events: none;
+  translate: 0 -50%;
+  -webkit-mask: url('../vendor/images/x.svg') no-repeat center / contain;
+  mask: url('../vendor/images/x.svg') no-repeat center / contain;
+  cursor: pointer;
+}
+
+.input-clear:hover {
+  background-color: var(--color-blue);
+}
+
+.input-field:has(.input:not(:placeholder-shown)) .input-clear {
+  opacity: 1;
+  pointer-events: auto;
+}

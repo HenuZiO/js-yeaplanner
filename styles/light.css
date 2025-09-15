@@ -1,0 +1,39 @@
+@media (prefers-color-scheme: light) {
+  body:not(.theme_dark) {
+    --color-gray-100: #2c2c2c;
+    --color-gray-200: #404040;
+    --color-gray-300: #6b6b6b;
+    --color-gray-400: #e2e2e2;
+    --color-gray-500: #ffffff;
+    --color-gray-600: #f7f9fc;
+    --color-gray-700: #ffffff;
+    --color-blue: #4ea8de;
+    --color-blue-dark: #1e6f9f;
+    --color-purple: #8284fa;
+    --color-purple-dark: #5e60ce;
+  }
+}
+
+body.theme_light {
+  --color-gray-100: #fafafa;
+  --color-gray-200: #262626;
+  --color-gray-300: #ababab;
+  --color-gray-400: #e1e1e1;
+  --color-gray-500: #f7f7f7;
+  --color-gray-600: #eeeeee;
+  --color-gray-700: #e5e5e5;
+  --color-blue: #4ea8de;
+  --color-blue-dark: #1e6f9f;
+  --color-purple: #8284fa;
+  --color-purple-dark: #5e60ce;
+}
+
+body.theme_light .theme-toggle {
+  background: linear-gradient(135deg, #d0d0d0 0%, #c0c0c0 100%);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+body.theme_light .theme-toggle::before {
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
