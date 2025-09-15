@@ -1,6 +1,6 @@
 export class ThemeController {
   constructor() {
-    this.currentTheme = 'dark'
+    this.currentTheme = this.getSystemTheme()
     this.themeToggle = null
     this.init()
   }
@@ -14,13 +14,12 @@ export class ThemeController {
   initEventListeners() {
     if (!this.themeToggle) return
 
-    this.themeToggle.addEventListener('click', () => {
-      this.toggleTheme()
-    })
+    this.themeToggle.addEventListener('click', () => this.toggleTheme())
   }
 
   toggleTheme() {
     const newTheme = this.currentTheme === 'dark' ? 'light' : 'dark'
+
     this.setTheme(newTheme)
   }
 
@@ -46,7 +45,10 @@ export class ThemeController {
   loadFromLocalStorage() {
     const rawData = localStorage.getItem('theme')
 
-    if (!rawData) return
+    if (!rawData) {
+      this.setTheme(this.currentTheme)
+      return
+    }
 
     try {
       const parsedData = JSON.parse(rawData)
@@ -63,5 +65,9 @@ export class ThemeController {
 
   getTheme() {
     return this.currentTheme
+  }
+
+  getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   }
 }
