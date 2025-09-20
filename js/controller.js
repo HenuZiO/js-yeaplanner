@@ -55,7 +55,8 @@ export class TodoController {
       }
 
       if (event.target.closest('[data-js-todo-item-edit-button]')) {
-        if (this.askUserInput('Изменить задачу:')) {
+        const newTitle = this.askUserInput('Изменить задачу:')
+        if (newTitle) {
           this.model.updateTask(id, newTitle)
         }
       }
