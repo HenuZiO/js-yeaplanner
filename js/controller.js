@@ -44,7 +44,7 @@ export class TodoController {
     })
 
     this.view.listElement.addEventListener('click', event => {
-      const id = e.target.closest('[data-js-todo-item]')?.dataset.id
+      const id = event.target.closest('[data-js-todo-item]')?.dataset.id
 
       if (!id) return
 
